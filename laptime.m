@@ -108,3 +108,21 @@ v = min(v_fwd,v_bwd);
 dt = ds./max(v,0.1);
 lap_time = sum(dt);
 fprintf("Lap time is %f", lap_time);
+
+figure;
+plot(track.s, v, 'LineWidth', 2);
+xlabel('Distance (m)');
+ylabel('Speed (m/s)');
+title('FSAE Lap Time Simulator');
+grid on;
+
+figure;
+plot(track.s, v_max_corner, '--', 'LineWidth', 1.5); hold on;
+plot(track.s, v_fwd, ':', 'LineWidth', 1.5);
+plot(track.s, v_bwd, '-.', 'LineWidth', 1.5);
+plot(track.s, v, 'LineWidth', 2);
+legend('Corner Limit','Forward','Backward','Final');
+xlabel('Distance (m)');
+ylabel('Speed (m/s)');
+title('Speed Constraints');
+grid on;
